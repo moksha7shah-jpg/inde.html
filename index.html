@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Be My Valentine 💖</title>
+<style>
+body {
+font-family: Arial;
+background: linear-gradient(#ff9a9e, #fad0c4);
+text-align: center;
+padding: 30px;
+}
+.box {
+background: white;
+padding: 20px;
+border-radius: 12px;
+max-width: 400px;
+margin: auto;
+}
+button {
+padding: 10px 15px;
+background: #ff4d6d;
+border: none;
+color: white;
+border-radius: 8px;
+margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+<h2>💘 Valentine Quiz 💘</h2>
+<p id="question"></p>
+<input id="answer" placeholder="Type your answer" />
+<br><br>
+<button onclick="next()">Submit</button>
+<p id="result"></p>
+</div>
+
+<script>
+const questions = [
+{ q: "What is my favourite colour?", a: "pink" },
+{ q: "What is my favourite pastime?", a: "travel" },
+{ q: "Will you be my Valentine forever? (yes/no)", a: "yes" }
+];
+
+let i = 0, score = 0;
+
+document.getElementById("question").innerText = questions[i].q;
+
+function next() {
+let user = document.getElementById("answer").value.toLowerCase();
+if (user === questions[i].a) score++;
+i++;
+
+if (i < questions.length) {
+document.getElementById("question").innerText = questions[i].q;
+document.getElementById("answer").value = "";
+} else {
+document.getElementById("result").innerHTML =
+`🎉 Score: ${score}/${questions.length}<br><br>
+💖 Happy Valentine’s Day, my love! 💖`;
+document.getElementById("question").style.display = "none";
+document.getElementById("answer").style.display = "none";
+}
+}
+</script>
+</body>
+</html>
